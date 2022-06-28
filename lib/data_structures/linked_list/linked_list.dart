@@ -190,7 +190,7 @@ class LinkedList<T> {
   }
 
   @override
-  String toString([String Function(T)? callback]) {
+  String toString([String Function(T value)? callback]) {
     return toArray().map((node) => node.toString(callback)).toString();
   }
 
