@@ -144,7 +144,7 @@ abstract class Heap<T> {
     // order with respect to its parent element.
     var currentIndex = customStartIndex ?? heapContainer.length - 1;
 
-    while (hasParent(currentIndex) && !pairIsInCorrectOrder(parent(currentIndex)!, heapContainer[currentIndex])) {
+    while (hasParent(currentIndex) && !pairIsInCorrectOrder(parent(currentIndex) as T, heapContainer[currentIndex])) {
       swap(currentIndex, getParentIndex(currentIndex));
       currentIndex = getParentIndex(currentIndex);
     }
@@ -158,7 +158,8 @@ abstract class Heap<T> {
     int nextIndex;
 
     while (hasLeftChild(currentIndex)) {
-      if (hasRightChild(currentIndex) && pairIsInCorrectOrder(rightChild(currentIndex)!, leftChild(currentIndex)!)) {
+      if (hasRightChild(currentIndex) &&
+          pairIsInCorrectOrder(rightChild(currentIndex) as T, leftChild(currentIndex) as T)) {
         nextIndex = getRightChildIndex(currentIndex);
       } else {
         nextIndex = getLeftChildIndex(currentIndex);
@@ -180,8 +181,7 @@ abstract class Heap<T> {
   /// For [MinHeap] the first element must be always smaller or equal.
   /// For [MaxHeap] the first element must be always bigger or equal.
   bool pairIsInCorrectOrder(T firstElement, T secondElement) {
-    throw Exception(
-        'You have to implement heap pair comparision method for ${firstElement} and ${secondElement} values.');
+    throw Exception('You have to implement heap pair comparision method for $firstElement and $secondElement values.');
   }
 
   @override
