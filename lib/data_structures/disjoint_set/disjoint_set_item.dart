@@ -7,10 +7,6 @@ class DisjointSetItem<K, V> {
   late Map<K, DisjointSetItem<K, V>> children;
 
   DisjointSetItem(this.value, {this.keyCallback}) {
-    // this.value = value;
-    // this.keyCallback = keyCallback;
-    /** @var {DisjointSetItem} this.parent */
-    // this.parent = null;
     children = {};
   }
 
@@ -39,7 +35,6 @@ class DisjointSetItem<K, V> {
 
     var rank = 0;
 
-    /** @var {DisjointSetItem} child */
     getChildren().forEach((child) {
       // Count child itself.
       rank += 1;
