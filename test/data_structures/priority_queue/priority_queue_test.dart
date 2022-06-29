@@ -34,7 +34,7 @@ void main() {
     });
 
     test('should poll from queue with respect to priorities', () {
-      final priorityQueue = new PriorityQueue<int>();
+      final priorityQueue = PriorityQueue<int>();
 
       priorityQueue.enqueue(10, 1);
       priorityQueue.enqueue(5, 2);
@@ -48,7 +48,7 @@ void main() {
     });
 
     test('should be possible to change priority of head node', () {
-      final priorityQueue = new PriorityQueue<int>();
+      final priorityQueue = PriorityQueue<int>();
 
       priorityQueue.enqueue(10, 1);
       priorityQueue.enqueue(5, 2);
@@ -67,7 +67,7 @@ void main() {
     });
 
     test('should be possible to change priority of internal nodes', () {
-      final priorityQueue = new PriorityQueue<int>();
+      final priorityQueue = PriorityQueue<int>();
 
       priorityQueue.enqueue(10, 1);
       priorityQueue.enqueue(5, 2);
@@ -86,7 +86,7 @@ void main() {
     });
 
     test('should be possible to change priority along with node addition', () {
-      final priorityQueue = new PriorityQueue<int>();
+      final priorityQueue = PriorityQueue<int>();
 
       priorityQueue.enqueue(10, 1);
       priorityQueue.enqueue(5, 2);
@@ -106,7 +106,7 @@ void main() {
     });
 
     test('should be possible to search in priority queue by value', () {
-      final priorityQueue = new PriorityQueue<int>();
+      final priorityQueue = PriorityQueue<int>();
 
       priorityQueue.enqueue(10, 1);
       priorityQueue.enqueue(5, 2);
