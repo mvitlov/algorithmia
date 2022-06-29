@@ -1,10 +1,10 @@
 import 'package:algorithmia/utils/comparator.dart';
 
-abstract class Heap<T> {
+class Heap<T> {
   late final List<T> heapContainer;
-  late final Comparator<T> compare;
+  late Comparator<T> compare;
   Heap([CompareFunction<T>? compareFunction]) {
-    heapContainer = [];
+    heapContainer = <T>[];
     compare = Comparator(compareFunction);
   }
 
@@ -80,8 +80,15 @@ abstract class Heap<T> {
     return item;
   }
 
-  Heap<T> add(T item) {
-    heapContainer.add(item);
+  Heap<T> add(T item, {allowDuplicate = true}) {
+    if (heapContainer.contains(item)) {
+      if (allowDuplicate) {
+        heapContainer.add(item);
+      }
+    } else {
+      heapContainer.add(item);
+    }
+
     heapifyUp();
     return this;
   }
@@ -126,8 +133,12 @@ abstract class Heap<T> {
     final foundItemIndices = <int>[];
 
     for (var itemIndex = 0; itemIndex < heapContainer.length; itemIndex += 1) {
-      if (comparator.equal(item, heapContainer[itemIndex])) {
-        foundItemIndices.add(itemIndex);
+      try {
+        if (comparator.equal(item, heapContainer[itemIndex])) {
+          foundItemIndices.add(itemIndex);
+        }
+      } catch (e) {
+        // eat error
       }
     }
 
