@@ -32,7 +32,7 @@ class BinarySearchTreeNode<T, M> {
         return left!.insert(value);
       }
 
-      final newNode = new BinarySearchTreeNode<T, M>(value, compareFunction: compareFunction);
+      final newNode = BinarySearchTreeNode<T, M>(value, compareFunction: compareFunction);
       setLeft(newNode);
 
       return newNode;
@@ -44,7 +44,7 @@ class BinarySearchTreeNode<T, M> {
         return right!.insert(value);
       }
 
-      final newNode = new BinarySearchTreeNode<T, M>(value, compareFunction: compareFunction);
+      final newNode = BinarySearchTreeNode<T, M>(value, compareFunction: compareFunction);
       setRight(newNode);
 
       return newNode;
@@ -257,6 +257,10 @@ class BinarySearchTreeNode<T, M> {
 
   int get height {
     return max(leftHeight, rightHeight);
+  }
+
+  int get balanceFactor {
+    return leftHeight - rightHeight;
   }
 
   @override
